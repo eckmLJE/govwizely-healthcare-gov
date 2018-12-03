@@ -2,38 +2,70 @@ import React, { Component } from "react";
 import "../css/Home.css";
 import { connect } from "react-redux";
 
-import { fetchHealth } from "../actions/fetchActions";
+import { fetchObjects } from "../actions/fetchActions";
+import { fetchCollections } from "../actions/fetchActions";
+import { fetchIndex } from "../actions/fetchActions";
+
+import IndexList from "./IndexList";
 
 class Home extends Component {
   handleFetch = e => {
     e.preventDefault();
-    const name = e.target.getAttribute("name");
-    if (name) this.props.fetchHealth(name);
+    const name = e.target.value;
+    switch (name) {
+      case "objects": {
+        this.props.fetchObjects();
+        break;
+      }
+      case "collections": {
+        this.props.fetchCollections("articles");
+        break;
+      }
+      case "index": {
+        this.props.fetchIndex();
+        break;
+      }
+      default: {
+        console.log("default reached");
+      }
+    }
   };
 
   render() {
+    const index = this.props.healthGov.index;
     return (
       <main>
-        <h1>Home</h1>
-        <div onClick={this.handleFetch} className="fetch-buttons">
-          <button name="objects">Objects</button>
-          <button name="collections">Collections</button>
-          <button name="index">Index</button>
+        <div className="menu">
+          <div className="menu-inner">
+            <select onChange={this.handleFetch}>
+              <option value="select">Please Select Below...</option>
+              <option value="objects">Objects</option>
+              <option value="collections">Collections</option>
+              <option value="index">Index</option>
+            </select>
+          </div>
+        </div>
+        <div className="index-list">
+          <div className="index-list-inner">
+            {!!index.length && <IndexList items={index} />}
+          </div>
         </div>
       </main>
     );
   }
 }
 
-// const mapStateToProps = state => ({
-//   healthGov: state.healthGov
-// });
+const mapStateToProps = state => ({
+  healthGov: state.healthGov
+});
 
 const mapDispatchToProps = dispatch => ({
-  fetchHealth: type => dispatch(fetchHealth(type))
+  fetchObjects: postTitle => dispatch(fetchObjects(postTitle)),
+  fetchCollections: contentType => dispatch(fetchCollections(contentType)),
+  fetchIndex: () => dispatch(fetchIndex())
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Home);

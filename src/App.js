@@ -9,11 +9,6 @@ import Home from "./components/Home.js";
 import DetailView from "./components/DetailView.js";
 
 class App extends Component {
-  // componentDidMount = () =>
-  //   fetch("https://www.healthcare.gov/api/index.json")
-  //     .then(res => res.json())
-  //     .then(console.log);
-
   render() {
     return (
       <div className="App">

@@ -1,6 +1,7 @@
 header {
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
   padding: 20px;
+  background-color: white;
 }
 
 header h1 {

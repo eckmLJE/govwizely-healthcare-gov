@@ -1,0 +1,24 @@
+li {
+  margin: 0;
+  padding: 20px;
+  border-bottom: 1px solid silver;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+li p {
+  margin: 0;
+  padding-top: 5px;
+  font-size: 0.9em;
+}
+
+li button {
+  float: right;
+}
