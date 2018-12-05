@@ -14,10 +14,12 @@
 .collection-item-inner ul {
   list-style: initial;
   padding-left: 30px;
+  font-size: 0.9em;
 }
 
 .collection-item-inner ol {
   padding-left: 30px;
+  font-size: 0.9em;
 }
 
 .collection-item-inner h1 {
@@ -26,6 +28,15 @@
   margin: 0;
   padding: 0;
   font-size: 1.2em;
+}
+
+.collection-item-inner h2,
+.collection-item-inner h3 {
+  font-size: 1em;
+}
+
+.collection-item-inner p {
+  font-size: 0.9em;
 }
 
 .detail-button {

@@ -1,4 +1,4 @@
-import { push } from "connected-react-router";
+import { push, goBack } from "connected-react-router";
 
 export const navToObject = url => {
   return dispatch => {
@@ -8,6 +8,6 @@ export const navToObject = url => {
 
 export const navToHome = () => {
   return dispatch => {
-    dispatch(push("/"));
+    dispatch(goBack());
   };
 };
