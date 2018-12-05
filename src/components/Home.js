@@ -29,17 +29,19 @@ class Home extends Component {
     return (
       <main>
         <div className="menu">
-          <select
-            value={storedContentType ? storedContentType : ""}
-            onChange={this.handleSelect}
-          >
-            <option value="">Select Content Type</option>
-            {this.collectionTypes.map(option => (
-              <option key={option} value={option}>
-                {this.capitalizeFirstLetter(option)}
-              </option>
-            ))}
-          </select>
+          <div className="menu-select">
+            <select
+              value={storedContentType ? storedContentType : ""}
+              onChange={this.handleSelect}
+            >
+              <option value="">Select Content Type</option>
+              {this.collectionTypes.map(option => (
+                <option key={option} value={option}>
+                  {this.capitalizeFirstLetter(option)}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className="collection-list">
           {!!collection && <CollectionList items={collection} />}

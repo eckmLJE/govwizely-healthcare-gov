@@ -6,7 +6,7 @@ import CollectionItem from "./CollectionItem";
 const filterEmpty = collection => collection.filter(item => item);
 
 const filterEnglish = collection =>
-  collection[0].categories
+  collection.length
     ? collection.filter(item => !item.categories.includes("es"))
     : collection;
 
@@ -16,6 +16,7 @@ const filterItems = collection => {
 };
 
 const CollectionList = props => {
+  console.log(props.items);
   const items = filterItems(props.items);
   return (
     <ul>
