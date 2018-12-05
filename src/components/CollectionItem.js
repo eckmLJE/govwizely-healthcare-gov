@@ -9,13 +9,15 @@ const CollectionItem = props => (
     <li className="collection-item-inner">
       <div className="item-header">
         <h1>{props.item.title}</h1>
+        <p>{props.item.bite}</p>
+      </div>
+      <div className="detail-button-container">
         <div className="detail-button">
           <button onClick={e => props.navToObject(props.item.url)}>
-            View Detail
+            VIEW DETAIL
           </button>
         </div>
       </div>
-      <div dangerouslySetInnerHTML={{ __html: props.item.excerpt }} />
     </li>
   </div>
 );

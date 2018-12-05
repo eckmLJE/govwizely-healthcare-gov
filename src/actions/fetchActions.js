@@ -4,7 +4,6 @@ export const fetchObject = postTitle => {
   return dispatch => {
     dispatch({ type: "START_FETCHING_OBJECT" });
     const objectUrl = url + postTitle + ".json";
-    console.log(objectUrl);
     return fetch(objectUrl).then(res =>
       res.ok
         ? res.json().then(json => dispatch({ type: "SET_OBJECT", json }))

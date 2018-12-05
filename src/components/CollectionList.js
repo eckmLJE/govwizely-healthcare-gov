@@ -16,12 +16,11 @@ const filterItems = collection => {
 };
 
 const CollectionList = props => {
-  console.log(props.items);
   const items = filterItems(props.items);
   return (
     <ul>
-      {items.map(item =>
-        item ? <CollectionItem key={item.url} item={item} /> : null
+      {items.map((item, i) =>
+        item ? <CollectionItem key={i} item={item} /> : null
       )}
     </ul>
   );

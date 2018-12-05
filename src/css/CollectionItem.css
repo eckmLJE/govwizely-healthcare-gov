@@ -4,11 +4,16 @@
 }
 
 .collection-item-inner {
+  position: relative;
   padding: 20px;
   border-radius: 8px;
   background-color: white;
   border: 1px solid silver;
   border-top: 6px solid #0a99e0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .collection-item-inner ul {
@@ -24,7 +29,7 @@
 
 .collection-item-inner h1 {
   display: inline-block;
-  width: 90%;
+  width: 100%;
   margin: 0;
   padding: 0;
   font-size: 1.2em;
@@ -39,13 +44,49 @@
   font-size: 0.9em;
 }
 
-.detail-button {
-  display: inline-block;
-  width: 10%;
+.item-header {
+  width: 75%;
 }
 
-button {
-  width: 100%;
-  margin: 0;
-  padding: 0;
+.detail-button-container {
+  width: 25%;
+}
+
+.detail-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-button button {
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 0.85em;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.detail-button button:hover {
+  background-color: #0a99e0;
+  border: none;
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .collection-item-inner {
+    flex-flow: column nowrap;
+  }
+
+  .item-header,
+  .detail-button-container {
+    width: 100%;
+  }
 }

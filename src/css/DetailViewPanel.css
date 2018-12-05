@@ -1,0 +1,11 @@
+.detail-view-panel {
+  position: relative;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid silver;
+  margin: 20px 0;
+}
+
+.detail-view-panel button {
+  width: 100px;
+}

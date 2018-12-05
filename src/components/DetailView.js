@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "../css/DetailView.css";
 
 import { fetchObject } from "../actions/fetchActions";
 
@@ -7,14 +8,16 @@ import DetailViewPanel from "./DetailViewPanel";
 
 class DetailView extends Component {
   componentDidMount = () => {
-    const url = this.props.match.params.url;
-    this.props.fetchObject(url);
+    const url = this.props.match.url;
+    this.props.fetchObject(url.slice(1, -1));
   };
 
   render() {
     const postObject = this.props.healthGov.postObject;
     return (
-      <div>{postObject && <DetailViewPanel postObject={postObject} />}</div>
+      <div className="detail-view">
+        {postObject && <DetailViewPanel postObject={postObject} />}
+      </div>
     );
   }
 }
