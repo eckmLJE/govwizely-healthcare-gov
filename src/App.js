@@ -4,7 +4,7 @@ import "./App.css";
 import { Route, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Header from "./components/Header.js";
+// import Header from "./components/Header.js";
 import Home from "./components/Home.js";
 import DetailView from "./components/DetailView.js";
 
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+        {/* <Header /> */}
         <Route exact path="/" component={Home} />
         <Route exact path="/detail/:type/:id" component={DetailView} />
       </div>

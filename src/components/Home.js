@@ -2,33 +2,15 @@ import React, { Component } from "react";
 import "../css/Home.css";
 import { connect } from "react-redux";
 
-import { fetchObjects } from "../actions/fetchActions";
-import { fetchCollections } from "../actions/fetchActions";
-import { fetchIndex } from "../actions/fetchActions";
+import { setIndex } from "../actions/fetchActions";
 
 import IndexList from "./IndexList";
 
 class Home extends Component {
-  handleFetch = e => {
+  handleSelect = e => {
     e.preventDefault();
     const name = e.target.value;
-    switch (name) {
-      case "objects": {
-        this.props.fetchObjects();
-        break;
-      }
-      case "collections": {
-        this.props.fetchCollections("articles");
-        break;
-      }
-      case "index": {
-        this.props.fetchIndex();
-        break;
-      }
-      default: {
-        console.log("default reached");
-      }
-    }
+    if (name === "index") this.props.setIndex();
   };
 
   render() {
@@ -37,7 +19,10 @@ class Home extends Component {
       <main>
         <div className="menu">
           <div className="menu-inner">
-            <select onChange={this.handleFetch}>
+            <select
+              value={this.props.selectOptions.mainOption}
+              onChange={this.handleSelect}
+            >
               <option value="select">Please Select Below...</option>
               <option value="objects">Objects</option>
               <option value="collections">Collections</option>
@@ -56,13 +41,12 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  healthGov: state.healthGov
+  healthGov: state.healthGov,
+  selectOptions: state.selectOptions
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchObjects: postTitle => dispatch(fetchObjects(postTitle)),
-  fetchCollections: contentType => dispatch(fetchCollections(contentType)),
-  fetchIndex: () => dispatch(fetchIndex())
+  setIndex: () => dispatch(setIndex())
 });
 
 export default connect(
