@@ -1,23 +1,21 @@
 const healthGov = (
   state = {
-    index: [],
+    contentType: null,
     collection: [],
+    object: {},
     fetching: false
   },
   action
 ) => {
   switch (action.type) {
-    case "START_FETCHING_INDEX": {
-      return { ...state, fetching: true };
+    case "START_FETCHING_COLLECTION": {
+      return { ...state, fetching: true, contentType: action.contentType };
     }
-    case "SET_INDEX": {
-      return { ...state, fetching: false, index: action.json };
-    }
-    case "START_FETCHING_COLLECTIONS": {
-      return { ...state, fetching: true };
-    }
-    case "SET_COLLECTIONS": {
+    case "SET_COLLECTION": {
       return { ...state, fetching: false, collection: action.json };
+    }
+    case "FETCH_COLLECTION_FAILED": {
+      return { ...state, fetching: false, contentType: null };
     }
     default:
       return state;

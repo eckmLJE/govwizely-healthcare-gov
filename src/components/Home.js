@@ -2,37 +2,43 @@ import React, { Component } from "react";
 import "../css/Home.css";
 import { connect } from "react-redux";
 
-import { setIndex } from "../actions/fetchActions";
+import { fetchCollection } from "../actions/fetchActions";
 
-import IndexList from "./IndexList";
+// import CollectionList from "./CollectionList";
 
 class Home extends Component {
   handleSelect = e => {
-    e.preventDefault();
-    const name = e.target.value;
-    if (name === "index") this.props.setIndex();
+    const contentType = e.target.value;
+    this.props.fetchCollection(contentType);
   };
 
+  collectionTypes = [
+    "articles",
+    "blog",
+    "questions",
+    "glossary",
+    "states",
+    "topics"
+  ];
+
+  capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
+
   render() {
-    const index = this.props.healthGov.index;
+    const storedContentType = this.props.healthGov.contentType;
     return (
       <main>
         <div className="menu">
           <div className="menu-inner">
             <select
-              value={this.props.selectOptions.mainOption}
+              value={storedContentType ? storedContentType : ""}
               onChange={this.handleSelect}
             >
-              <option value="select">Please Select Below...</option>
-              <option value="objects">Objects</option>
-              <option value="collections">Collections</option>
-              <option value="index">Index</option>
+              {this.collectionTypes.map(option => (
+                <option key={option} value={option}>
+                  {this.capitalizeFirstLetter(option)}
+                </option>
+              ))}
             </select>
-          </div>
-        </div>
-        <div className="index-list">
-          <div className="index-list-inner">
-            {!!index.length && <IndexList items={index} />}
           </div>
         </div>
       </main>
@@ -41,12 +47,11 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  healthGov: state.healthGov,
-  selectOptions: state.selectOptions
+  healthGov: state.healthGov
 });
 
 const mapDispatchToProps = dispatch => ({
-  setIndex: () => dispatch(setIndex())
+  fetchCollection: contentType => dispatch(fetchCollection(contentType))
 });
 
 export default connect(

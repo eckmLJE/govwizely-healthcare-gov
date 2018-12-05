@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/IndexItem.css";
+import "../css/CollectionItem.css";
 
-const IndexItem = props => (
+const CollectionItem = props => (
   <li>
     <button>View Detail</button>
     <h1>{props.item.title}</h1>
@@ -9,4 +9,4 @@ const IndexItem = props => (
   </li>
 );
 
-export default IndexItem;
+export default CollectionItem;

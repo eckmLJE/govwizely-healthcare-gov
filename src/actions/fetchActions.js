@@ -1,6 +1,6 @@
 const url = "https://www.healthcare.gov/";
 
-const fetchObjects = postTitle => {
+export const fetchObject = postTitle => {
   return dispatch => {
     dispatch({ type: "START_FETCHING_OBJECTS" });
     return fetch(url + postTitle + ".json")
@@ -9,41 +9,15 @@ const fetchObjects = postTitle => {
   };
 };
 
-const fetchCollections = contentType => {
+export const fetchCollection = contentType => {
   return dispatch => {
-    dispatch({ type: "START_FETCHING_COLLECTIONS" });
+    dispatch({ type: "START_FETCHING_COLLECTION", contentType });
     return fetch(url + "api/" + contentType + ".json").then(res => {
       res.ok
         ? res.json().then(json => {
-            dispatch({ type: "SET_COLLECTIONS", json });
+            dispatch({ type: "SET_COLLECTION", json });
           })
-        : console.log(res);
+        : dispatch({ type: "FETCH_COLLECTION_FAILED" });
     });
   };
 };
-
-const fetchIndex = () => {
-  return dispatch => {
-    dispatch({ type: "START_FETCHING_INDEX" });
-    return fetch(url + "api/index.json").then(res => {
-      res.ok
-        ? res.json().then(json => {
-            dispatch({ type: "SET_INDEX", json });
-          })
-        : console.log(res);
-    });
-  };
-};
-
-export const setIndex = () => {
-  fetchIndex();
-  return {
-    type: "SET_PRIMARY_OPTION",
-    option: "index"
-  };
-};
-
-export const setCollectionsPrimary = () => ({
-  type: "SET_PRIMARY_ACTION",
-  option: "COLLECTIONS"
-});
