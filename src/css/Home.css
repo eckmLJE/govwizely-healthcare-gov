@@ -1,34 +1,15 @@
 main {
   padding: 20px;
-  display: flex;
-  flex-flow: row nowrap;
   max-width: 900px;
   margin: auto;
-  /* justify-content: flex-start; */
-  align-items: flex-start;
 }
 
 .menu {
   width: 200px;
-  padding: 10px;
-}
-
-.menu-inner {
-  background-color: white;
-  border: silver;
-  min-height: 300px;
-  padding: 10px;
-  border: 1px solid #e8e8e9;
+  padding: 20px;
 }
 
 .collection-list {
-  width: calc(100% - 100px);
+  width: 100%;
   padding: 10px;
-}
-
-.collection-list-inner {
-  min-height: 300px;
-  background-color: white;
-  padding: 10px;
-  border: 1px solid #e8e8e9;
 }
