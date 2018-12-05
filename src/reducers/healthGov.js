@@ -2,7 +2,7 @@ const healthGov = (
   state = {
     contentType: null,
     collection: [],
-    object: {},
+    postObject: {},
     fetching: false
   },
   action
@@ -16,6 +16,15 @@ const healthGov = (
     }
     case "FETCH_COLLECTION_FAILED": {
       return { ...state, fetching: false, contentType: null };
+    }
+    case "START_FETCHING_OBJECT": {
+      return { ...state, fetching: true };
+    }
+    case "SET_OBJECT": {
+      return { ...state, fetching: false, postObject: action.json };
+    }
+    case "FETCH_OBJECT_FAILED": {
+      return { ...state, fetching: false };
     }
     default:
       return state;

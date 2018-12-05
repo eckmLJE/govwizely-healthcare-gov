@@ -14,7 +14,7 @@ class App extends Component {
       <div className="App">
         {/* <Header /> */}
         <Route exact path="/" component={Home} />
-        <Route exact path="/detail/:type/:id" component={DetailView} />
+        <Route exact path="/detail/:url" component={DetailView} />
       </div>
     );
   }
