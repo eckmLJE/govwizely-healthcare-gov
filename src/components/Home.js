@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { fetchCollection } from "../actions/fetchActions";
 
-// import CollectionList from "./CollectionList";
+import CollectionList from "./CollectionList";
 
 class Home extends Component {
   handleSelect = e => {
@@ -25,6 +25,7 @@ class Home extends Component {
 
   render() {
     const storedContentType = this.props.healthGov.contentType;
+    const collection = this.props.healthGov.collection[storedContentType];
     return (
       <main>
         <div className="menu">
@@ -39,6 +40,15 @@ class Home extends Component {
                 </option>
               ))}
             </select>
+          </div>
+        </div>
+        <div className="collection-list">
+          <div className="collection-list-inner">
+            {!!collection && (
+              <CollectionList
+                items={this.props.healthGov.collection[storedContentType]}
+              />
+            )}
           </div>
         </div>
       </main>

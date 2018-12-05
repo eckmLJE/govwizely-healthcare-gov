@@ -21,12 +21,12 @@ main {
   border: 1px solid #e8e8e9;
 }
 
-.index-list {
+.collection-list {
   width: calc(100% - 100px);
   padding: 10px;
 }
 
-.index-list-inner {
+.collection-list-inner {
   min-height: 300px;
   background-color: white;
   padding: 10px;
