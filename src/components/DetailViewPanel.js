@@ -10,13 +10,25 @@ class DetailViewPanel extends Component {
     if (postObject.type === "article") return this.renderArticle(postObject);
   };
 
+  capitalizeFirstLetter = str => str.charAt(0).toUpperCase() + str.slice(1);
+
   renderArticle = postObject => (
     <div>
       <h1>{postObject.title}</h1>
-      <p>{postObject.type}</p>
-      <p>{postObject.page_topic}</p>
-      <p>{postObject.page_lifecycle}</p>
-      <p>{postObject.page_audience}</p>
+      <div className="post-detail">
+        <p>
+          <span>Topic:</span> {postObject.page_topic}
+        </p>
+        <p>
+          <span>Lifecycle:</span> {postObject.page_lifecycle}
+        </p>
+        <p>
+          <span>Audience:</span> {postObject.page_audience}
+        </p>
+        <p>
+          <span>Category:</span> {postObject.page_category}
+        </p>
+      </div>
       <div
         className="detail-content"
         dangerouslySetInnerHTML={{ __html: postObject.content }}
@@ -27,10 +39,12 @@ class DetailViewPanel extends Component {
   render() {
     return (
       <div className="detail-view-panel">
-        <button onClick={this.props.navToHome}>Back Home</button>
-        <div className="detail-header">{this.renderPostByType()}</div>
+        <div className="detail-view-panel-inner">
+          <button onClick={this.props.navToHome}>{"<< "}BACK HOME</button>
+          <div className="detail-header">{this.renderPostByType()}</div>
 
-        <div className="home-button" />
+          <div className="home-button" />
+        </div>
       </div>
     );
   }

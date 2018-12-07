@@ -9,15 +9,15 @@ const CollectionItem = props => (
     <li className="collection-item-inner">
       <div className="item-header">
         <h1>{props.item.title}</h1>
-        <p>{props.item.bite}</p>
-      </div>
-      <div className="detail-button-container">
-        <div className="detail-button">
-          <button onClick={e => props.navToObject(props.item.url)}>
-            VIEW DETAIL
-          </button>
+        <div className="detail-button-container">
+          <div className="detail-button">
+            <button onClick={e => props.navToObject(props.item.url)}>
+              VIEW DETAIL{" >>"}
+            </button>
+          </div>
         </div>
       </div>
+      <p>{props.item.bite}</p>
     </li>
   </div>
 );
